@@ -19,7 +19,7 @@ b.appendBBCode(ChatColor.RED + "YES! [b]this is [i]bbcode[i] ![r] check out the 
 b.build().sendToPlayer(player);
 ```
 
-Bungeecord (yet untested!)
+Bungeecord
 -----------
 ```
 IChatBuilder<ProxiedPlayer> b = BungeeChatAPI.newBuilder();
