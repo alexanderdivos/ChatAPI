@@ -20,6 +20,9 @@ import net.minecraft.server.v1_7_R3.PacketPlayOutChat;
 public final class Chat_Bukkit_v1_7_3 implements IChatMessageFactory<org.bukkit.entity.Player> {
 
 	public static final org.bukkit.ChatColor convert( final ChatColor c ) {
+		if(c == null) {
+			return null;
+		}
 		return org.bukkit.ChatColor.getByChar( c.getCode() );
 	}
 

@@ -13,6 +13,9 @@ import de.mickare.chatapi.chat.ChatMessage;
 public final class Chat_BungeeCord implements IChatMessageFactory<net.md_5.bungee.api.connection.ProxiedPlayer> {
 
 	public static final net.md_5.bungee.api.ChatColor convert( final ChatColor c ) {
+		if(c == null) {
+			return null;
+		}
 		return net.md_5.bungee.api.ChatColor.getByChar( c.getCode() );
 	}
 
