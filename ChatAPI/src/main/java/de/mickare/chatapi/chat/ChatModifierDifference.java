@@ -57,11 +57,11 @@ public final class ChatModifierDifference {
 		if (color.isFormat()) {
 			if (color == ChatColor.RESET) {
 				this.color = color;
-				this.bold = null;
-				this.italic = null;
-				this.underlined = null;
-				this.strikethrough = null;
-				this.obfuscated = null;
+				this.bold = false;
+				this.italic = false;
+				this.underlined = false;
+				this.strikethrough = false;
+				this.obfuscated = false;
 			} else {
 				switch (color) {
 				case BOLD:
