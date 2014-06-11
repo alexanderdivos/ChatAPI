@@ -1,0 +1,12 @@
+name: BukkitTest
+main: de.mickare.chatapi.bukkittest.TestPlugin
+version: 1.0.0
+author: mickare
+description: Test Plugin
+depend: []
+commands:
+  test:
+    description: Sends a test Chat Message.
+    usage: "/test <bbcode>"
+    permission: chatapi.test
+    permission-message: You don't have <permission>
