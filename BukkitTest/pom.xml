@@ -1,55 +1,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>de.mickare.chatapi</groupId>
-  <artifactId>bukkittest</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>de.mickare.chatapi</groupId>
+	<artifactId>bukkittest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>BukkitTest</name>
-  <url>http://maven.apache.org</url>
+	<name>BukkitTest</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-  <dependencies>
+	<dependencies>
 		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
 		</dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>de.mickare.chatapi</groupId>
-    	<artifactId>chatapi</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
+		<dependency>
+			<groupId>de.mickare.chatapi</groupId>
+			<artifactId>chatapi</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>craftbukkit</artifactId>
 			<version>LATEST</version>
 		</dependency>
-  </dependencies>
-  
-  
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.google.guava</groupId>
-				<artifactId>guava</artifactId>
-				<version>17.0</version>
-			</dependency>
-		</dependencies>
-		<!-- <dependencies> <dependency> <groupId>org.spigotmc</groupId> <artifactId>spigot-api</artifactId> 
-			<version>1.5.1-R0.2</version> <scope>provided</scope> </dependency> </dependencies> -->
-	</dependencyManagement>
-	
+	</dependencies>
+
+
 	<repositories>
 		<repository>
 			<snapshots>
@@ -68,7 +52,7 @@
 			<url>http://repo.rennschnitzel.de:8081/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>rs-public</id>
@@ -81,7 +65,7 @@
 			<url>http://repo.rennschnitzel.de:8081/nexus/content/repositories/rs-public/</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
+
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<finalName>${project.artifactId}</finalName>
@@ -125,14 +109,9 @@
 									<exclude>ru.*:*</exclude>
 									<exclude>org.*:*</exclude>
 									<exclude>net.*:*</exclude>
+									<exclude>com.*:*</exclude>
 								</excludes>
 							</artifactSet>
-							<relocations>
-								<relocation>
-									<pattern>com.google</pattern>
-									<shadedPattern>de.mickare.com.google</shadedPattern>
-								</relocation>
-							</relocations>
 						</configuration>
 					</execution>
 				</executions>

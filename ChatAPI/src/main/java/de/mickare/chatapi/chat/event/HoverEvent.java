@@ -1,7 +1,6 @@
 package de.mickare.chatapi.chat.event;
 
-import com.google.common.base.Preconditions;
-
+import de.mickare.chatapi.Verify;
 import de.mickare.chatapi.api.IComponentChat;
 import de.mickare.chatapi.api.IEventHover;
 import de.mickare.chatapi.api.action.ActionHover;
@@ -29,8 +28,8 @@ final public class HoverEvent implements IEventHover {
 	}
 
 	public HoverEvent(final ActionHover action, final IComponentChat value) {
-		Preconditions.checkNotNull( action );
-		Preconditions.checkNotNull( value );
+		Verify.checkNotNull( action );
+		Verify.checkNotNull( value );
 		this.action = action;
 		this.value = value;
 	}

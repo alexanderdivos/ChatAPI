@@ -5,8 +5,6 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.google.common.base.Preconditions;
-
 import de.mickare.chatapi.api.IChatBBCodeBuilder;
 import de.mickare.chatapi.api.IChatBuilder;
 import de.mickare.chatapi.api.IChatMessageFactory;
@@ -141,7 +139,7 @@ public class BBCodeChatBuilder<P> extends ChatBuilder<P> implements IChatBBCodeB
 				} else {
 					cvalue = ComponentText.create( value );
 				}
-				Preconditions.checkNotNull( cvalue );
+				Verify.checkNotNull( cvalue );
 				final HoverEvent event = new HoverEvent( action, cvalue );
 				this.openHover( event );
 			} else if (match.equals( "/hover" )) {

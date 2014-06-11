@@ -3,8 +3,6 @@ package de.mickare.chatapi.chat;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.minecraft.util.com.google.common.collect.ImmutableList;
-
 import de.mickare.chatapi.ChatColor;
 import de.mickare.chatapi.api.IComponentChat;
 import de.mickare.chatapi.api.IComponentTranslate;
@@ -31,7 +29,7 @@ public class TranslatableComponent extends ComponentChat implements IComponentTr
 	}
 
 	public List<IComponentChat> getWith() {
-		return ImmutableList.copyOf( with );
+		return new LinkedList<>( with );
 	}
 
 	public void setWith( List<ComponentChat> with ) {

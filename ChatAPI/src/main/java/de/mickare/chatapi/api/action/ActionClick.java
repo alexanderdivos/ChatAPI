@@ -1,8 +1,7 @@
 package de.mickare.chatapi.api.action;
 
+import java.util.HashMap;
 import java.util.Map;
-
-import com.google.common.collect.Maps;
 
 public enum ActionClick {
 
@@ -11,7 +10,7 @@ public enum ActionClick {
 			true), TWITCH_USER_INFO("TWITCH_USER_INFO", 3, "twitch_user_info",
 			false), SUGGEST_COMMAND("SUGGEST_COMMAND", 4, "suggest_command",
 			true);
-	private static final Map<String, ActionClick> f = Maps.newHashMap();
+	private static final Map<String, ActionClick> f = new HashMap<>();
 	private final boolean flag;
 	private final String name;
 

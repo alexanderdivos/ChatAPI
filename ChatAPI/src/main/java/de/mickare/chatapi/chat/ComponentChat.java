@@ -4,11 +4,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.minecraft.util.com.google.common.base.Preconditions;
-
-import com.google.common.collect.ImmutableList;
-
 import de.mickare.chatapi.ChatColor;
+import de.mickare.chatapi.Verify;
 import de.mickare.chatapi.api.IComponentChat;
 import de.mickare.chatapi.api.IEventClick;
 import de.mickare.chatapi.api.IEventHover;
@@ -168,7 +165,7 @@ public abstract class ComponentChat implements IComponentChat {
 	}
 
 	public final List<IComponentChat> getExtra() {
-		return (this.extra != null ? ImmutableList.copyOf( extra ) : ImmutableList.<IComponentChat> of());
+		return (this.extra != null ? new LinkedList<IComponentChat>( extra ) : new LinkedList<IComponentChat>());
 	}
 	@Override
 	public final void clearExtra() {
@@ -184,7 +181,7 @@ public abstract class ComponentChat implements IComponentChat {
 
 	@Override
 	public final IComponentChat add( final IComponentChat o ) {
-		Preconditions.checkNotNull( o );
+		Verify.checkNotNull( o );
 		IComponentChat cl = o.clone( this );
 		this.extra.add( cl );
 		return cl;
@@ -192,7 +189,7 @@ public abstract class ComponentChat implements IComponentChat {
 
 	@Override
 	public final boolean remove( final IComponentChat o ) {
-		Preconditions.checkNotNull( o );
+		Verify.checkNotNull( o );
 		return this.extra.remove( o );
 	}
 

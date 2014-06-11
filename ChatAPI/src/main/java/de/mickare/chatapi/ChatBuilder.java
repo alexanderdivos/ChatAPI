@@ -7,11 +7,6 @@ import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.google.common.collect.Lists;
-
-import net.minecraft.util.com.google.common.base.Preconditions;
-import net.minecraft.util.com.google.common.collect.ImmutableList;
-
 import de.mickare.chatapi.api.*;
 import de.mickare.chatapi.api.action.ActionClick;
 import de.mickare.chatapi.chat.ChatModifierDifference;
@@ -48,13 +43,15 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 
 	@Override
 	public List<IComponentChat> getComponents() {
-		return ImmutableList.copyOf( this.components );
+		return new LinkedList<>( this.components );
 	}
 
 	@Override
 	public IChatMessage<P> build() {
 		if (this.components.isEmpty()) {
-			return this.messageFactory.createMessage( Lists.<IComponentChat> newArrayList( ComponentText.create( "" ) ) );
+			List<IComponentChat> l = new LinkedList<>();
+			l.add( ComponentText.create( "" ) );
+			return this.messageFactory.createMessage( l );
 		}
 		ListIterator<IComponentChat> li = this.components.listIterator();
 		while (li.hasNext()) {
@@ -76,14 +73,14 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 
 	@Override
 	public ChatBuilder<P> append( ChatColor color ) {
-		Preconditions.checkNotNull( color );
+		Verify.checkNotNull( color );
 		this.currentModifierTree.add( color );
 		return this;
 	}
 
 	@Override
 	public ChatBuilder<P> openColor( ChatColor color ) {
-		Preconditions.checkNotNull( color );
+		Verify.checkNotNull( color );
 		this.currentModifierTree = this.currentModifierTree.open( color );
 		return this;
 	}
@@ -96,14 +93,14 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 
 	@Override
 	public ChatBuilder<P> closeColor( ChatColor color ) {
-		Preconditions.checkNotNull( color );
+		Verify.checkNotNull( color );
 		this.currentModifierTree = this.currentModifierTree.close( color );
 		return this;
 	}
 
 	@Override
 	public ChatBuilder<P> append( IComponentChat c ) {
-		Preconditions.checkNotNull( c );
+		Verify.checkNotNull( c );
 		if (this.components.isEmpty()) {
 			this.newLine();
 		}
@@ -167,7 +164,7 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 
 	@Override
 	public ChatBuilder<P> appendAndFormat( IComponentChat c ) {
-		Preconditions.checkNotNull( c );
+		Verify.checkNotNull( c );
 		if (this.components.isEmpty()) {
 			this.newLine();
 		}
@@ -267,14 +264,14 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 
 	@Override
 	public ChatBuilder<P> appendTranslation( String translate ) {
-		Preconditions.checkNotNull( translate );
+		Verify.checkNotNull( translate );
 		return appendTranslation( translate, Collections.<IComponentChat> emptyList() );
 	}
 
 	@Override
 	public ChatBuilder<P> appendTranslation( String translate, List<IComponentChat> with ) {
-		Preconditions.checkNotNull( translate );
-		Preconditions.checkNotNull( with );
+		Verify.checkNotNull( translate );
+		Verify.checkNotNull( with );
 
 		if (this.components.isEmpty()) {
 			this.newLine();
@@ -287,7 +284,7 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 
 	@Override
 	public ChatBuilder<P> openClick( IEventClick event ) {
-		Preconditions.checkNotNull( event );
+		Verify.checkNotNull( event );
 		this.currentModifierTree = this.currentModifierTree.open( event );
 		return this;
 	}
@@ -300,14 +297,14 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 
 	@Override
 	public ChatBuilder<P> closeClick( IEventClick event ) {
-		Preconditions.checkNotNull( event );
+		Verify.checkNotNull( event );
 		this.currentModifierTree = this.currentModifierTree.close( event );
 		return this;
 	}
 
 	@Override
 	public ChatBuilder<P> openHover( IEventHover event ) {
-		Preconditions.checkNotNull( event );
+		Verify.checkNotNull( event );
 		this.currentModifierTree = this.currentModifierTree.open( event );
 		return this;
 	}
@@ -320,7 +317,7 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 
 	@Override
 	public ChatBuilder<P> closeHover( IEventHover event ) {
-		Preconditions.checkNotNull( event );
+		Verify.checkNotNull( event );
 		this.currentModifierTree = this.currentModifierTree.close( event );
 		return this;
 	}

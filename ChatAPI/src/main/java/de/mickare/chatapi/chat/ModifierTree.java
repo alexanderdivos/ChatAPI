@@ -3,9 +3,8 @@ package de.mickare.chatapi.chat;
 import java.util.LinkedList;
 import java.util.logging.Logger;
 
-import com.google.common.base.Preconditions;
-
 import de.mickare.chatapi.ChatColor;
+import de.mickare.chatapi.Verify;
 import de.mickare.chatapi.api.IComponentChat;
 import de.mickare.chatapi.api.IEventClick;
 import de.mickare.chatapi.api.IEventHover;
@@ -41,7 +40,7 @@ public class ModifierTree {
 	}
 
 	private final ModifierTree _close( final Object o ) {
-		Preconditions.checkNotNull( o );
+		Verify.checkNotNull( o );
 		Logger.getLogger( "ChatAPI" ).info( o.toString() );
 		if (this.value == o) {
 			return close();
@@ -50,7 +49,7 @@ public class ModifierTree {
 	}
 
 	private final ModifierTree _closeClass( final Class<?> c ) {
-		Preconditions.checkNotNull( c );
+		Verify.checkNotNull( c );
 		Logger.getLogger( "ChatAPI" ).info( "Close class: " + c.getName()  );
 		if (!c.isInstance( this.value )) {
 			return parent != null ? parent._closeClass( c ) : this;
@@ -59,12 +58,12 @@ public class ModifierTree {
 	}
 
 	private final ModifierTree _open( final Object value ) {
-		Preconditions.checkNotNull( value );
+		Verify.checkNotNull( value );
 		return new ModifierTree( this, value );
 	}
 
 	public final void add( final ChatColor color ) {
-		Preconditions.checkNotNull( color );
+		Verify.checkNotNull( color );
 		this.colorElements.add( color );
 	}
 

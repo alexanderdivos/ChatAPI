@@ -1,7 +1,6 @@
 package de.mickare.chatapi.chat.event;
 
-import com.google.common.base.Preconditions;
-
+import de.mickare.chatapi.Verify;
 import de.mickare.chatapi.api.IEventClick;
 import de.mickare.chatapi.api.action.ActionClick;
 
@@ -12,8 +11,8 @@ final public class ClickEvent implements IEventClick {
 	private final String value;
 
 	public ClickEvent(final ActionClick action, final String value) {
-		Preconditions.checkNotNull( action );
-		Preconditions.checkNotNull( value );
+		Verify.checkNotNull( action );
+		Verify.checkNotNull( value );
 		this.action = action;
 		this.value = value;
 	}

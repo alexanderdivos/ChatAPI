@@ -1,13 +1,12 @@
 package de.mickare.chatapi.api.action;
 
+import java.util.HashMap;
 import java.util.Map;
-
-import com.google.common.collect.Maps;
 
 public enum ActionHover {
 
     SHOW_TEXT("SHOW_TEXT", 0, "show_text", true), SHOW_ACHIEVEMENT("SHOW_ACHIEVEMENT", 1, "show_achievement", true), SHOW_ITEM("SHOW_ITEM", 2, "show_item", true);
-    private static final Map<String, ActionHover> d = Maps.newHashMap();
+    private static final Map<String, ActionHover> d = new HashMap<>();
     private final boolean flag;
     private final String name;
     //private static final EnumHoverAction[] g = new EnumHoverAction[] { SHOW_TEXT, SHOW_ACHIEVEMENT, SHOW_ITEM};
