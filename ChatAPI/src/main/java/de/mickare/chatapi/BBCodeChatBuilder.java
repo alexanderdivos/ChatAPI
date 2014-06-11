@@ -130,16 +130,16 @@ public class BBCodeChatBuilder<P> extends ChatBuilder<P> implements IChatBBCodeB
 				final ActionHover action = ActionHover.fromString( matcher.group( groupId + 1 ).toLowerCase() );
 				final String value = matcher.group( groupId + 2 );
 				IComponentChat cvalue = null;
-				if (!value.contains( String.valueOf( ChatColor.COLOR_CHAR ) )) {
-					cvalue = ComponentText.create( value );
-				} else {
-					final IChatBuilder<P> cb = this.getMessageFactory().newBuilder().setOneLiner( true ).appendText( value );
+				if(action.equals( ActionHover.SHOW_TEXT )) {
+					final IChatBuilder<P> cb = this.getMessageFactory().newBBCodeBuilder().setOneLiner( true ).appendText( value );
 					final List<IComponentChat> l = cb.getComponents();
 					if(l.isEmpty() || l.get( 0 ) == null) {
 						cvalue = ComponentText.create( value );
 					} else {
 						cvalue = l.get( 0 );
 					}
+				} else {
+					cvalue = ComponentText.create( value );
 				}
 				Preconditions.checkNotNull( cvalue );
 				final HoverEvent event = new HoverEvent( action, cvalue );
