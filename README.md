@@ -32,3 +32,11 @@ IChatBBCodeBuilder<ProxiedPlayer> b = BungeeChatAPI.newBBCodeBuilder();
 b.appendBBCode(ChatColor.RED + "YES! [b]this is [i]bbcode[i] ![r] check out the reference on github[/r][/b]");
 b.build().sendToPlayer(player);
 ```
+
+Maven
+-----
+
+http://repo.rennschnitzel.de:8081/nexus/content/repositories/rs-public/
+
+Download latest:
+http://repo.rennschnitzel.de:8081/nexus/content/repositories/rs-public/de/mickare/chatapi/
