@@ -11,19 +11,19 @@ final public class HoverEvent implements IEventHover {
 	private final ActionHover action;
 	private final IComponentChat value;
 
-	public static HoverEvent HoverEvent_showText( String value ) {
+	public static HoverEvent showText( String value ) {
 		return new HoverEvent( ActionHover.SHOW_TEXT, ComponentText.create( value ) );
 	}
 
-	public static HoverEvent HoverEvent_showText( IComponentChat value ) {
+	public static HoverEvent showText( IComponentChat value ) {
 		return new HoverEvent( ActionHover.SHOW_TEXT, value );
 	}
 
-	public static HoverEvent HoverEvent_achievement( String value ) {
+	public static HoverEvent achievement( String value ) {
 		return new HoverEvent( ActionHover.SHOW_ACHIEVEMENT, ComponentText.create( value ) );
 	}
 
-	public static HoverEvent HoverEvent_item( String value ) {
+	public static HoverEvent item( String value ) {
 		return new HoverEvent( ActionHover.SHOW_ITEM, ComponentText.create( value ) );
 	}
 
