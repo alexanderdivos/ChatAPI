@@ -1,7 +1,6 @@
 package de.mickare.chatapi;
 
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -76,8 +75,6 @@ public class BBCodeChatBuilder<P> extends ChatBuilder<P> implements IChatBBCodeB
 			}
 			last_match = matcher.end();
 
-			Logger.getLogger( "ChatAPI" ).info( "match: " + match );
-			
 			match = match.toLowerCase();
 			if (match.equals( "b" )) {
 				this.openColor( ChatColor.BOLD );
@@ -118,7 +115,6 @@ public class BBCodeChatBuilder<P> extends ChatBuilder<P> implements IChatBBCodeB
 				final ClickEvent event = new ClickEvent( action, value );
 				this.openClick( event );
 			} else if (match.equals( "/click" )) {
-				Logger.getLogger( "ChatAPI" ).info( "closeClick" );
 				this.closeClick();
 			} else if (match.equals( "hover" )) {
 				
@@ -143,7 +139,6 @@ public class BBCodeChatBuilder<P> extends ChatBuilder<P> implements IChatBBCodeB
 				final HoverEvent event = new HoverEvent( action, cvalue );
 				this.openHover( event );
 			} else if (match.equals( "/hover" )) {
-				Logger.getLogger( "ChatAPI" ).info( "closeHover" );
 				this.closeHover();
 			}
 

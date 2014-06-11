@@ -54,16 +54,21 @@ public final class ComponentText extends ComponentChat implements IComponentText
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		ChatColor c = this.getColor();
-		sb.append( c != null ? c : ChatColor.RESET );
-		if (this.isBold()) {
+		sb.append( c != null ? c : "" );
+		Boolean b = this.isBold();
+		Boolean i = this.isItalic();
+		Boolean u = this.isUnderlined();
+		Boolean s = this.isStrikethrough();
+		Boolean o = this.isObfuscated();
+		if (b != null && b.booleanValue()) {
 			sb.append( ChatColor.BOLD );
-		} else if (this.isItalic()) {
+		} else if (i != null && i.booleanValue()) {
 			sb.append( ChatColor.ITALIC );
-		} else if (this.isUnderlined()) {
+		} else if (u != null && u.booleanValue()) {
 			sb.append( ChatColor.UNDERLINE );
-		} else if (this.isStrikethrough()) {
+		} else if (s != null && s.booleanValue()) {
 			sb.append( ChatColor.STRIKETHROUGH );
-		} else if (this.isObfuscated()) {
+		} else if (o != null && o.booleanValue()) {
 			sb.append( ChatColor.MAGIC );
 		}
 		sb.append( text );

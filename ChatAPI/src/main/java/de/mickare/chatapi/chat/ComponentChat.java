@@ -198,7 +198,7 @@ public abstract class ComponentChat implements IComponentChat {
 		StringBuilder sb = new StringBuilder();
 		sb.append( this.toString() );
 		for(IComponentChat c : this.getExtra()) {
-			sb.append( c.toString() );
+			sb.append( c.getString() );
 		}
 		return sb.toString();
 	}
