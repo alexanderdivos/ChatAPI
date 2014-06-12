@@ -56,14 +56,13 @@ public final class Chat_BungeeCord implements IChatMessageFactory<net.md_5.bunge
 		if (e == null) {
 			return null;
 		}
-		return new net.md_5.bungee.api.chat.HoverEvent( convert( e.getAction() ), convert( e.getValue() ).toArray(
-				new net.md_5.bungee.api.chat.BaseComponent[0] ) );
+		return new net.md_5.bungee.api.chat.HoverEvent( convert( e.getAction() ), new net.md_5.bungee.api.chat.BaseComponent[]{convert( e.getValue() )} );
 	}
 
 	public static final net.md_5.bungee.api.chat.BaseComponent[] convert( final IComponentChat[] v ) {
 		final List<net.md_5.bungee.api.chat.BaseComponent> result = new LinkedList<>();
 		for (int i = 0; i < v.length; i++) {
-			result.addAll( convert( v[i] ) );
+			result.add( convert( v[i] ) );
 		}
 		return result.toArray( new net.md_5.bungee.api.chat.BaseComponent[0] );
 	}
@@ -71,36 +70,32 @@ public final class Chat_BungeeCord implements IChatMessageFactory<net.md_5.bunge
 	public static final List<net.md_5.bungee.api.chat.BaseComponent> convert( final List<IComponentChat> v ) {
 		final List<net.md_5.bungee.api.chat.BaseComponent> result = new LinkedList<>();
 		for (IComponentChat c : v) {
-			result.addAll( convert( c ) );
+			result.add( convert( c ) );
 		}
 		return result;
 	}
 
-	public static final List<net.md_5.bungee.api.chat.BaseComponent> convert( final IComponentChat c ) {
-		List<net.md_5.bungee.api.chat.BaseComponent> result = new LinkedList<>();
-
-		net.md_5.bungee.api.chat.BaseComponent parent;
+	public static final net.md_5.bungee.api.chat.BaseComponent convert( final IComponentChat c ) {
+		net.md_5.bungee.api.chat.BaseComponent result;
 		if (c instanceof IComponentText) {
-			parent = _convert( (IComponentText) c );
+			result = _convert( (IComponentText) c );
 		} else if (c instanceof IComponentTranslate) {
-			parent = _convert( (IComponentTranslate) c );
+			result = _convert( (IComponentTranslate) c );
 		} else {
 			throw new IllegalStateException();
 		}
 
-		parent.setColor( convert( c.getColorRaw() ) );
-		parent.setBold( c.isBoldRaw() );
-		parent.setItalic( c.isItalicRaw() );
-		parent.setUnderlined( c.isUnderlined() );
-		parent.setStrikethrough( c.isStrikethroughRaw() );
-		parent.setObfuscated( c.isObfuscatedRaw() );
-		parent.setClickEvent( convert( c.getClickEvent() ) );
-		parent.setHoverEvent( convert( c.getHoverEvent() ) );
-
-		result.add( parent );
+		result.setColor( convert( c.getColorRaw() ) );
+		result.setBold( c.isBoldRaw() );
+		result.setItalic( c.isItalicRaw() );
+		result.setUnderlined( c.isUnderlined() );
+		result.setStrikethrough( c.isStrikethroughRaw() );
+		result.setObfuscated( c.isObfuscatedRaw() );
+		result.setClickEvent( convert( c.getClickEvent() ) );
+		result.setHoverEvent( convert( c.getHoverEvent() ) );
 
 		for (IComponentChat v : c.getExtra()) {
-			result.addAll( convert( v ) );
+			result.addExtra( convert( v ) );
 		}
 
 		return result;
@@ -134,7 +129,7 @@ public final class Chat_BungeeCord implements IChatMessageFactory<net.md_5.bunge
 			if (converted == null) {
 				converted = new LinkedList<>();
 				for (final IComponentChat c : this.getComponents()) {
-					converted.add( convert( c ).toArray( new net.md_5.bungee.api.chat.BaseComponent[0] ) );
+					converted.add( new net.md_5.bungee.api.chat.BaseComponent[]{convert( c )} );
 				}
 			}
 			return converted;
