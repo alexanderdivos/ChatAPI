@@ -182,8 +182,9 @@ public class BBCodeChatBuilder<P> extends ChatBuilder<P> implements IChatBBCodeB
 	}
 
 	@Override
-	public void setPlain( boolean plain ) {
+	public IChatBBCodeBuilder<P> setPlain( boolean plain ) {
 		this.plain = plain;
+		return this;
 	}
 
 	

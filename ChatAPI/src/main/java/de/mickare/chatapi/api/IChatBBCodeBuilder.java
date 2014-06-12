@@ -6,6 +6,6 @@ public interface IChatBBCodeBuilder<P> extends IChatBuilder<P> {
 
 	public boolean isPlain();
 
-	public void setPlain( boolean plain );
+	public IChatBBCodeBuilder<P> setPlain( boolean plain );
 	
 }
