@@ -35,8 +35,8 @@ b.build().sendToPlayer(player);
 
 Maven
 -----
-
 http://repo.rennschnitzel.de:8081/nexus/content/repositories/rs-public/
 
-Download latest:
+Download
+--------
 http://repo.rennschnitzel.de:8081/nexus/content/repositories/rs-public/de/mickare/chatapi/
