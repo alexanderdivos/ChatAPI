@@ -85,6 +85,7 @@ public class BBCodeChatBuilder<P> extends ChatBuilder<P> implements IChatBBCodeB
 					if (last_match < matcher.start()) {
 						this.appendText( message.substring( last_match, matcher.start() ) );
 					}
+					last_match = matcher.end();
 				}
 
 			} else {
