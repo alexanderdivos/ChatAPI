@@ -203,12 +203,7 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 			return this;
 		}
 
-		String[] lines;
-		if (!oneliner) {
-			lines = text.split( "\n" );
-		} else {
-			lines = new String[] { text };
-		}
+		final String[] lines = !oneliner ? text.split( "\\n" ) : new String[] { text };
 
 		int index = 0;
 		do {
