@@ -11,7 +11,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>main</module>
+		<module>ChatAPI</module>
 	</modules>
 
 	<repositories>
