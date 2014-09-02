@@ -6,8 +6,13 @@
 	<artifactId>chatapi-parent</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 
+	<url>https://github.com/mickare/ChatAPI</url>
+	
 	<packaging>pom</packaging>
 
+	<modules>
+		<module>chatapi</module>
+	</modules>
 
 	<repositories>
 		<repository>
