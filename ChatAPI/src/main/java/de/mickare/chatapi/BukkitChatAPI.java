@@ -28,7 +28,7 @@ public class BukkitChatAPI {
 	public static IChatBuilder<Player> newBuilder() {
 		switch (getVersion()) {
 		case v1_7_3:
-			return new Chat_Bukkit_v1_7_3().newBuilder();
+			return new Chat_Bukkit_v1_7_4().newBuilder();
 		default:
 			throw new UnsupportedOperationException();
 		}
@@ -38,7 +38,7 @@ public class BukkitChatAPI {
 	public static IChatBBCodeBuilder<Player> newBBCodeBuilder() {
 		switch (getVersion()) {
 		case v1_7_3:
-			return new Chat_Bukkit_v1_7_3().newBBCodeBuilder();
+			return new Chat_Bukkit_v1_7_4().newBBCodeBuilder();
 		default:
 			throw new UnsupportedOperationException();
 		}

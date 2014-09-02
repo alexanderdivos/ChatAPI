@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_7_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import de.mickare.chatapi.api.*;
@@ -12,12 +12,12 @@ import de.mickare.chatapi.api.action.ActionClick;
 import de.mickare.chatapi.api.action.ActionHover;
 import de.mickare.chatapi.chat.ChatMessage;
 
-import net.minecraft.server.v1_7_R3.ChatModifier;
-import net.minecraft.server.v1_7_R3.EnumChatFormat;
-import net.minecraft.server.v1_7_R3.IChatBaseComponent;
-import net.minecraft.server.v1_7_R3.PacketPlayOutChat;
+import net.minecraft.server.v1_7_R4.ChatModifier;
+import net.minecraft.server.v1_7_R4.EnumChatFormat;
+import net.minecraft.server.v1_7_R4.IChatBaseComponent;
+import net.minecraft.server.v1_7_R4.PacketPlayOutChat;
 
-public final class Chat_Bukkit_v1_7_3 implements IChatMessageFactory<org.bukkit.entity.Player> {
+public final class Chat_Bukkit_v1_7_4 implements IChatMessageFactory<org.bukkit.entity.Player> {
 
 	public static final org.bukkit.ChatColor convert( final ChatColor c ) {
 		if(c == null) {
@@ -26,68 +26,68 @@ public final class Chat_Bukkit_v1_7_3 implements IChatMessageFactory<org.bukkit.
 		return org.bukkit.ChatColor.getByChar( c.getCode() );
 	}
 
-	public static final net.minecraft.server.v1_7_R3.EnumClickAction convert( final ActionClick a ) {
+	public static final net.minecraft.server.v1_7_R4.EnumClickAction convert( final ActionClick a ) {
 		if (a == ActionClick.OPEN_FILE) {
-			return net.minecraft.server.v1_7_R3.EnumClickAction.OPEN_FILE;
+			return net.minecraft.server.v1_7_R4.EnumClickAction.OPEN_FILE;
 		} else if (a == ActionClick.OPEN_URL) {
-			return net.minecraft.server.v1_7_R3.EnumClickAction.OPEN_URL;
+			return net.minecraft.server.v1_7_R4.EnumClickAction.OPEN_URL;
 		} else if (a == ActionClick.SUGGEST_COMMAND) {
-			return net.minecraft.server.v1_7_R3.EnumClickAction.SUGGEST_COMMAND;
+			return net.minecraft.server.v1_7_R4.EnumClickAction.SUGGEST_COMMAND;
 		} else if (a == ActionClick.RUN_COMMAND) {
-			return net.minecraft.server.v1_7_R3.EnumClickAction.RUN_COMMAND;
+			return net.minecraft.server.v1_7_R4.EnumClickAction.RUN_COMMAND;
 		} else if (a == ActionClick.TWITCH_USER_INFO) {
-			return net.minecraft.server.v1_7_R3.EnumClickAction.TWITCH_USER_INFO;
+			return net.minecraft.server.v1_7_R4.EnumClickAction.TWITCH_USER_INFO;
 		} else {
 			throw new IllegalStateException();
 		}
 	}
 
-	public static final net.minecraft.server.v1_7_R3.ChatClickable convert( final IEventClick e ) {
+	public static final net.minecraft.server.v1_7_R4.ChatClickable convert( final IEventClick e ) {
 		if(e == null) {
 			return null;
 		}
-		return new net.minecraft.server.v1_7_R3.ChatClickable( convert( e.getAction() ), e.getValue() );
+		return new net.minecraft.server.v1_7_R4.ChatClickable( convert( e.getAction() ), e.getValue() );
 	}
 
-	public static final net.minecraft.server.v1_7_R3.EnumHoverAction convert( final ActionHover a ) {
+	public static final net.minecraft.server.v1_7_R4.EnumHoverAction convert( final ActionHover a ) {
 		if (a == ActionHover.SHOW_ACHIEVEMENT) {
-			return net.minecraft.server.v1_7_R3.EnumHoverAction.SHOW_ACHIEVEMENT;
+			return net.minecraft.server.v1_7_R4.EnumHoverAction.SHOW_ACHIEVEMENT;
 		} else if (a == ActionHover.SHOW_ITEM) {
-			return net.minecraft.server.v1_7_R3.EnumHoverAction.SHOW_ITEM;
+			return net.minecraft.server.v1_7_R4.EnumHoverAction.SHOW_ITEM;
 		} else if (a == ActionHover.SHOW_TEXT) {
-			return net.minecraft.server.v1_7_R3.EnumHoverAction.SHOW_TEXT;
+			return net.minecraft.server.v1_7_R4.EnumHoverAction.SHOW_TEXT;
 		} else {
 			throw new IllegalStateException();
 		}
 	}
 
-	public static final net.minecraft.server.v1_7_R3.ChatHoverable convert( final IEventHover e ) {
+	public static final net.minecraft.server.v1_7_R4.ChatHoverable convert( final IEventHover e ) {
 		if(e == null) {
 			return null;
 		}
-		return new net.minecraft.server.v1_7_R3.ChatHoverable( convert( e.getAction() ), convert( e.getValue() ) );
+		return new net.minecraft.server.v1_7_R4.ChatHoverable( convert( e.getAction() ), convert( e.getValue() ) );
 	}
 
-	public static final net.minecraft.server.v1_7_R3.IChatBaseComponent convert( final IComponentChat[] v ) {
-		net.minecraft.server.v1_7_R3.IChatBaseComponent first = null;
+	public static final net.minecraft.server.v1_7_R4.IChatBaseComponent convert( final IComponentChat[] v ) {
+		net.minecraft.server.v1_7_R4.IChatBaseComponent first = null;
 		for (int i = 0; i < v.length; i++) {
 			if (first == null) {
 				first = convert( v[i] );
 			} else {
-				first.a( convert( v[i] ) );
+				first.addSibling( convert( v[i] ) );
 			}
 
 		}
 		return first;
 	}
 
-	public static final net.minecraft.server.v1_7_R3.IChatBaseComponent convert( final List<IComponentChat> v ) {
-		net.minecraft.server.v1_7_R3.IChatBaseComponent first = null;
+	public static final net.minecraft.server.v1_7_R4.IChatBaseComponent convert( final List<IComponentChat> v ) {
+		net.minecraft.server.v1_7_R4.IChatBaseComponent first = null;
 		for (IComponentChat c : v) {
 			if (first == null) {
 				first = convert( c );
 			} else {
-				first.a( convert( c ) );
+				first.addSibling( convert( c ) );
 			}
 
 		}
@@ -101,8 +101,8 @@ public final class Chat_Bukkit_v1_7_3 implements IChatMessageFactory<org.bukkit.
 		return EnumChatFormat.b( c.getName() );
 	}
 
-	public static final net.minecraft.server.v1_7_R3.IChatBaseComponent convert( final IComponentChat c ) {
-		net.minecraft.server.v1_7_R3.IChatBaseComponent result;
+	public static final net.minecraft.server.v1_7_R4.IChatBaseComponent convert( final IComponentChat c ) {
+		net.minecraft.server.v1_7_R4.IChatBaseComponent result;
 		if (c instanceof IComponentText) {
 			result = _convert( (IComponentText) c );
 		} else if (c instanceof IComponentTranslate) {
@@ -123,17 +123,17 @@ public final class Chat_Bukkit_v1_7_3 implements IChatMessageFactory<org.bukkit.
 		cm.a( convert( c.getHoverEvent() ) );
 
 		for (final IComponentChat v : c.getExtra()) {
-			result.a( convert( v ) );
+			result.addSibling( convert( v ) );
 		}
 
 		return result;
 	}
 
-	private static final net.minecraft.server.v1_7_R3.ChatComponentText _convert( final IComponentText c ) {
-		return new net.minecraft.server.v1_7_R3.ChatComponentText( c.getText() );
+	private static final net.minecraft.server.v1_7_R4.ChatComponentText _convert( final IComponentText c ) {
+		return new net.minecraft.server.v1_7_R4.ChatComponentText( c.getText() );
 	}
 
-	private static final net.minecraft.server.v1_7_R3.IChatBaseComponent _convert( final IComponentTranslate c ) {
+	private static final net.minecraft.server.v1_7_R4.IChatBaseComponent _convert( final IComponentTranslate c ) {
 		throw new UnsupportedOperationException();
 	}
 	

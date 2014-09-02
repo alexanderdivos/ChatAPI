@@ -2,9 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>de.mickare.chatapi</groupId>
+	<parent>
+		<groupId>de.mickare.chatapi</groupId>
+		<artifactId>chatapi-parent</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
 	<artifactId>chatapi</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>ChatAPI</name>
@@ -34,33 +39,6 @@
 			<version>LATEST</version>
 		</dependency>
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<id>bukkit-repo</id>
-			<name>Bukkit Repository</name>
-			<url>http://repo.bukkit.org/content/groups/public</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<id>oss-sonatype</id>
-			<name>Sonatype Repository</name>
-			<url>https://oss.sonatype.org/content/groups/public/</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<id>rs-public</id>
-			<name>Rennschnitzel public repository</name>
-			<url>http://repo.rennschnitzel.de:8081/nexus/content/groups/public/</url>
-		</repository>
-	</repositories>
 
 	<distributionManagement>
 		<repository>
