@@ -9,7 +9,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>chatapi</artifactId>
+	<artifactId>chatapi-main</artifactId>
 	<packaging>jar</packaging>
 
 	<name>ChatAPI</name>
