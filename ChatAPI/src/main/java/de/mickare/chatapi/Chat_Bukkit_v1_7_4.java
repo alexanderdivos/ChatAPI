@@ -164,7 +164,6 @@ public final class Chat_Bukkit_v1_7_4 implements IChatMessageFactory<org.bukkit.
 			if (player instanceof CraftPlayer) {
 				final CraftPlayer p = ((CraftPlayer) player);
 				for (final IChatBaseComponent c : getConverted()) {
-					Bukkit.getLogger().info( "Siblings: " + c.a().size() );
 					p.getHandle().playerConnection.sendPacket( new PacketPlayOutChat( c ) );
 				}
 			} else {
