@@ -1,11 +1,12 @@
 package de.mickare.chatapi;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+
+import com.google.common.collect.ImmutableList;
 
 import de.mickare.chatapi.api.*;
 import de.mickare.chatapi.api.action.ActionClick;
@@ -143,19 +144,18 @@ public final class Chat_Bukkit_v1_7_4 implements IChatMessageFactory<org.bukkit.
 
 	private static final class BukkitChatMessage extends ChatMessage<org.bukkit.entity.Player> {
 
-		private List<IChatBaseComponent> converted = null;
+		private final List<IChatBaseComponent> converted;
 
 		public BukkitChatMessage(final List<IComponentChat> lines) {
 			super( lines );
+			ImmutableList.Builder<IChatBaseComponent> b = ImmutableList.builder();
+			for (final IComponentChat c : lines) {
+				b.add( convert( c ) );
+			}
+			this.converted = b.build();
 		}
 
 		private final List<IChatBaseComponent> getConverted() {
-			if (converted == null) {
-				converted = new LinkedList<>();
-				for (final IComponentChat c : this.getComponents()) {
-					converted.add( convert( c ) );
-				}
-			}
 			return converted;
 		}
 
@@ -164,8 +164,12 @@ public final class Chat_Bukkit_v1_7_4 implements IChatMessageFactory<org.bukkit.
 			if (player instanceof CraftPlayer) {
 				final CraftPlayer p = ((CraftPlayer) player);
 				for (final IChatBaseComponent c : getConverted()) {
+					Bukkit.getLogger().info( "Siblings: " + c.a().size() );
 					p.getHandle().playerConnection.sendPacket( new PacketPlayOutChat( c ) );
 				}
+			} else {
+				// Fallback
+				player.sendMessage( toString() );
 			}
 		}
 
