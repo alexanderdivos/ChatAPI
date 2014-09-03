@@ -8,7 +8,7 @@ import de.mickare.chatapi.api.IChatBuilder;
 public class BukkitChatAPI {
 
 	private static enum Version {
-		v1_7_3
+		v1_7_4
 	}
 
 	private static Version v = null;
@@ -16,8 +16,8 @@ public class BukkitChatAPI {
 	private static Version getVersion() {
 		if (v == null) {
 			try {
-				Class.forName( "net.minecraft.server.v1_7_R3.IChatBaseComponent", false, BukkitChatAPI.class.getClassLoader() );
-				v = Version.v1_7_3;
+				Class.forName( "net.minecraft.server.v1_7_R4.IChatBaseComponent", false, BukkitChatAPI.class.getClassLoader() );
+				v = Version.v1_7_4;
 			} catch (ClassNotFoundException e) {
 				throw new UnsupportedOperationException( e );
 			}
@@ -27,7 +27,7 @@ public class BukkitChatAPI {
 
 	public static IChatBuilder<Player> newBuilder() {
 		switch (getVersion()) {
-		case v1_7_3:
+		case v1_7_4:
 			return new Chat_Bukkit_v1_7_4().newBuilder();
 		default:
 			throw new UnsupportedOperationException();
@@ -37,7 +37,7 @@ public class BukkitChatAPI {
 	
 	public static IChatBBCodeBuilder<Player> newBBCodeBuilder() {
 		switch (getVersion()) {
-		case v1_7_3:
+		case v1_7_4:
 			return new Chat_Bukkit_v1_7_4().newBBCodeBuilder();
 		default:
 			throw new UnsupportedOperationException();
