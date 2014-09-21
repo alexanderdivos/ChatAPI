@@ -39,6 +39,14 @@
 			<name>Rennschnitzel public repository</name>
 			<url>http://repo.rennschnitzel.de:8081/nexus/content/groups/public/</url>
 		</repository>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>rs-protected-release</id>
+			<name>Rennschnitzel Protected Release Repository</name>
+			<url>http://repo.rennschnitzel.de:8081/nexus/content/repositories/rs-protected-release/</url>
+		</repository>
 	</repositories>
 
 

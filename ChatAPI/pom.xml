@@ -26,13 +26,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
-			<groupId>org.bukkit</groupId>
-			<artifactId>craftbukkit</artifactId>
-			<version>1.7.10-R0.1-SNAPSHOT</version>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot</artifactId>
+			<version>1.8.0-20140916</version>
+			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>net.md-5</groupId>
 			<artifactId>bungeecord-api</artifactId>
@@ -43,12 +42,12 @@
 	<distributionManagement>
 		<repository>
 			<id>rs-public</id>
-			<name>Internal Releases</name>
+			<name>Rennschnitzel Public Repository</name>
 			<url>http://repo.rennschnitzel.de:8081/nexus/content/repositories/rs-public/</url>
 		</repository>
 		<snapshotRepository>
 			<id>rs-public</id>
-			<name>Internal Releases</name>
+			<name>Rennschnitzel Public Repository</name>
 			<url>http://repo.rennschnitzel.de:8081/nexus/content/repositories/rs-public/</url>
 		</snapshotRepository>
 	</distributionManagement>
