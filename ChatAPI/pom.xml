@@ -48,6 +48,7 @@
 			<groupId>com.comphenix.packetwrapper</groupId>
 			<artifactId>PacketWrapper</artifactId>
 			<version>1.7.2-R0.5</version>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
