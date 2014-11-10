@@ -20,6 +20,9 @@ public interface IChatBuilder<P> {
 	public IChatBuilder<P> closeColor(ChatColor color);
 	
 	public IChatBuilder<P> append(IComponentChat c);
+	public IChatBuilder<P> append(List<IComponentChat> c);
+	public IChatBuilder<P> append(IChatBuilder<P> b);
+	
 	public ChatBuilder<P> appendAndFormat( IComponentChat c );
 	
 	public IChatBuilder<P> append(String text);

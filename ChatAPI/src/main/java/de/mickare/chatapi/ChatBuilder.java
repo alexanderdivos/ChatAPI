@@ -163,6 +163,20 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 	}
 
 	@Override
+	public IChatBuilder<P> append( List<IComponentChat> c ) {
+		for (IComponentChat cc : c) {
+			this.append( cc );
+		}
+		return this;
+	}
+
+	@Override
+	public IChatBuilder<P> append( IChatBuilder<P> b ) {
+		this.append( b.getComponents() );
+		return this;
+	}
+
+	@Override
 	public ChatBuilder<P> appendAndFormat( IComponentChat c ) {
 		Verify.checkNotNull( c );
 		if (this.components.isEmpty()) {
@@ -212,22 +226,23 @@ public class ChatBuilder<P> implements IChatBuilder<P> {
 			}
 			// final ListIterator<IComponentChat> li = this.components.listIterator();
 			// IComponentChat parent = this.components.getLast();
-			
-			if(index < lines.length) {
+
+			if (index < lines.length) {
 				final String line = lines[index];
 				int last_MatchEnd = 0;
-	
+
 				if (line.trim().length() > 0) {
 					final Matcher matcher = COLOR_PATTERN.matcher( line );
 					while (matcher.find()) {
 						if (last_MatchEnd < matcher.start()) {
-							this.currentModifierTree.addComponent( ComponentText.create( line.substring( last_MatchEnd, matcher.start() ) ) );
+							this.currentModifierTree
+									.addComponent( ComponentText.create( line.substring( last_MatchEnd, matcher.start() ) ) );
 						}
 						last_MatchEnd = matcher.end();
 						this.currentModifierTree.add( ChatColor.getByChar( matcher.group().toLowerCase().charAt( 1 ) ) );
 					}
 				}
-	
+
 				if (last_MatchEnd < line.length()) {
 					this.currentModifierTree.addComponent( ComponentText.create( line.substring( last_MatchEnd, line.length() ) ) );
 				}
