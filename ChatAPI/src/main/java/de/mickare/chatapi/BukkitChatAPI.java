@@ -18,17 +18,17 @@ public class BukkitChatAPI {
 	
 	private static Version getVersion() {
 		if ( v == null ) {
-			// ProtocolLib ftw!
-			if ( Bukkit.getPluginManager().isPluginEnabled( "ProtocolLib" ) ) {
-				v = Version.protocolLib;
-				return v;
-			}
 			// Standard Spigot
 			try {
 				Class.forName( "org.spigotmc.SpigotConfig", false, BukkitChatAPI.class.getClassLoader() );
 				v = Version.spigot;
 				return v;
 			} catch ( ClassNotFoundException e ) {
+			}
+			// ProtocolLib ftw!
+			if ( Bukkit.getPluginManager().isPluginEnabled( "ProtocolLib" ) ) {
+				v = Version.protocolLib;
+				return v;
 			}
 			// Standard CraftBukkit
 			try {
