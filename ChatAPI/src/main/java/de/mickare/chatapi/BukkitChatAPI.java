@@ -10,7 +10,6 @@ public class BukkitChatAPI {
 	
 	private static enum Version {
 		protocolLib,
-		bukkit_v1_7_4,
 		spigot
 	}
 	
@@ -30,14 +29,6 @@ public class BukkitChatAPI {
 				v = Version.protocolLib;
 				return v;
 			}
-			// Standard CraftBukkit
-			try {
-				Class.forName( "net.minecraft.server.v1_7_R4.IChatBaseComponent", false, BukkitChatAPI.class
-						.getClassLoader() );
-				v = Version.bukkit_v1_7_4;
-				return v;
-			} catch ( ClassNotFoundException e ) {
-			}
 			
 			if ( v == null ) {
 				throw new UnsupportedOperationException( "No supported ServerVersions for BukkitChatAPI" );
@@ -48,12 +39,10 @@ public class BukkitChatAPI {
 	
 	public static IChatBuilder<Player> newBuilder() {
 		switch ( getVersion() ) {
-			case bukkit_v1_7_4:
-				return new Chat_Bukkit_v1_7_4().newBuilder();
-			case protocolLib:
-				return new Chat_ProtocolLib().newBuilder();
 			case spigot:
 				return new Chat_Spigot().newBuilder();
+			case protocolLib:
+				return new Chat_ProtocolLib().newBuilder();
 			default:
 				throw new UnsupportedOperationException();
 		}
@@ -62,12 +51,10 @@ public class BukkitChatAPI {
 	
 	public static IChatBBCodeBuilder<Player> newBBCodeBuilder() {
 		switch ( getVersion() ) {
-			case bukkit_v1_7_4:
-				return new Chat_Bukkit_v1_7_4().newBBCodeBuilder();
-			case protocolLib:
-				return new Chat_ProtocolLib().newBBCodeBuilder();
 			case spigot:
 				return new Chat_Spigot().newBBCodeBuilder();
+			case protocolLib:
+				return new Chat_ProtocolLib().newBBCodeBuilder();
 			default:
 				throw new UnsupportedOperationException();
 		}
