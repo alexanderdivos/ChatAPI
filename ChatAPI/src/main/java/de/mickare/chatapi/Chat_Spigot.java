@@ -3,6 +3,7 @@ package de.mickare.chatapi;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.ProxyServer;
@@ -142,10 +143,9 @@ public final class Chat_Spigot implements IChatMessageFactory<Player> {
 			}
 		}
 
-		@SuppressWarnings("deprecation")
 		@Override
 		public final void sendToConsole() {
-			ProxyServer.getInstance().getConsole().sendMessage( toString() );
+			Bukkit.getConsoleSender().sendMessage( toString() );
 		}
 
 	}
